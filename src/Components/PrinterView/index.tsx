@@ -3,29 +3,25 @@ import ThreedyContext from '../../Contexts/ThreedyContext';
 import Cantilever from '../../Printers/Cantilever';
 import Defaults from '../../Printers/Defaults';
 import I3 from '../../Printers/I3';
+import BambuLab from '../../Printers/BambuLab';
 
 import styles from './styles';
 
 const PrinterView = ({ toggleVideo, hasCamera, style }) => {
-
-    const {
-        hass,
-        config
-    } = useContext(ThreedyContext);
-
+    const { config } = useContext(ThreedyContext);
     const ref = useRef();
 
     const getPrinterType = () => {
-
         switch (config.printer_type) {
             case 'I3':
                 return I3
             case 'Cantilever':
                 return Cantilever
+            case 'BambuLab':
+                return BambuLab;
             default:
                 return I3
         }
-
     }
 
     let Printer = getPrinterType();

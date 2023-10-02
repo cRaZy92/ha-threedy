@@ -1,6 +1,7 @@
 export enum ThreedyPrinter {
     I3 = "I3",
-    Cantilever = "Cantilever"
+    Cantilever = "Cantilever",
+    BambuLab = "BambuLab"
 }
 
 export enum ThreedyTheme {

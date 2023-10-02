@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {HassEntity} from "home-assistant-js-websocket";
-import {ThreedyCondition, ThreedyConfig} from "../../types";
-import Stat from "./Stat";
+import React, { useEffect, useState } from 'react';
+import { HassEntity } from 'home-assistant-js-websocket';
+import { ThreedyCondition, ThreedyConfig, ThreedyPrinter } from '../../types';
+import Stat from './Stat';
 import moment from 'moment';
 
 const formatDuration = (
@@ -48,20 +48,20 @@ const renderTime = (
 const getTotalSeconds = (
     timeEntity: HassEntity,
     config: ThreedyConfig
-) => { 
-    let result;   
-    if(!config.use_mqtt){
-        result = parseInt(timeEntity.state) || 0;
-    } else {
-        if(timeEntity.state){
-            const [hours, minutes, seconds] = timeEntity.state.split(':');
-            result = (+hours) * 60 * 60 + (+minutes) * 60 + (+seconds);
-
-        } else {
-            result = 0;
-        }
+) => {
+    if(config.printer_type === ThreedyPrinter.BambuLab) {
+        return parseInt(timeEntity.state) * 60 || 0;
     }
-    return result;
+
+    if(!config.use_mqtt){
+        return parseInt(timeEntity.state) || 0;
+    }
+
+    if(timeEntity.state) {
+        const [hours, minutes, seconds] = timeEntity.state.split(':');
+        return (+hours) * 60 * 60 + (+minutes) * 60 + (+seconds);
+    }
+    return 0;
 }
 
 

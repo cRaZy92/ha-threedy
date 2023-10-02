@@ -4,7 +4,7 @@ const styles = {
     Card: {
         display: 'flex',
         flexDirection: 'row',
-        justifyCcontent: 'center',
+        justifyContent: 'center',
         alignItems: 'stretch',
         boxSizing: 'borderBox',
         background: 'var( --ha-card-background, var(--card-background-color, white) )',
