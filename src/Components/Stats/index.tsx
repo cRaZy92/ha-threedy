@@ -23,9 +23,9 @@ const Stats: React.FC<StatsProps> = ({ showPercent = true }) => {
             {
                 showPercent ? (
                     <div style={{ ...styles.Percent }}>
-                        <p style={{ ...styles.PercentText }}>{round ? Math.round(percent) : percent}%</p>
+                        <p style={{ ...styles.PercentText }}>{round ? Math.round(percent as number) : percent}%</p>
                     </div>
-                ) : (null)
+                ) : null
             }
             <div style={{ ...styles.Monitored }}>
                 {

@@ -92,6 +92,10 @@ const TimeStat: React.FC<TimeStatProps> = ({timeEntity, condition, config, direc
 
         setLastIntervalId(id);
 
+        return () => {
+            clearInterval(lastIntervalId);
+            clearInterval(id);
+        }
     }, [timeEntity])
 
     return (

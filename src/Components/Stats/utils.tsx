@@ -132,7 +132,7 @@ const renderStats = (
 ) => {
 
     return config.monitored.map(
-        condition => renderCondition( hass, config, condition )
+        condition => <div key={condition}>{renderCondition( hass, config, condition )}</div>
     )
 
 }
