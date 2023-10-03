@@ -7,7 +7,7 @@ class Scale {
         this.scale_factor = scale_factor;
     }
 
-    
+
     val( value )
     {
         return this.scale_factor * value;
@@ -15,6 +15,7 @@ class Scale {
 
     og( value )
     {
+        if(this.scale_factor === 0) return value;
         return value / this.scale_factor;
     }
 
