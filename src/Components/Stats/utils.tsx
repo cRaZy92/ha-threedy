@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { HomeAssistant, ThreedyCondition, ThreedyConfig, ThreedyPrinter } from '../../types';
 import TemperatureStat from './TemperatureStat';
 import { getEntity } from '../../Utils/HomeAssistant';
@@ -50,7 +50,7 @@ const renderCondition = (
             return (
                 <Stat
                     name={"Status"}
-                    value={ entity( config.printer_type === ThreedyPrinter.BambuLab ? '_current_stage' : mqtt ? '_print_status' : '_current_state').state }
+                    value={ entity( config.printer_type === ThreedyPrinter.BambuLab ? '_print_status' : mqtt ? '_print_status' : '_current_state').state }
                 />
             )
         case ThreedyCondition.ETA:
@@ -73,7 +73,7 @@ const renderCondition = (
         case ThreedyCondition.Elapsed:
             return (
                 <TimeStat
-                    timeEntity={ entity( config.printer_type === ThreedyPrinter.BambuLab ? '_current_stage' : mqtt ? '_print_time' : '_time_elapsed' ) }
+                    timeEntity={ entity( config.printer_type === ThreedyPrinter.BambuLab ? '_print_status' : mqtt ? '_print_time' : '_time_elapsed' ) }
                     condition={condition}
                     config={config}
                     direction={1}
@@ -132,7 +132,7 @@ const renderStats = (
 ) => {
 
     return config.monitored.map(
-        condition => <div key={condition}>{renderCondition( hass, config, condition )}</div>
+        condition => <Fragment key={condition}>{renderCondition( hass, config, condition )}</Fragment>
     )
 
 }

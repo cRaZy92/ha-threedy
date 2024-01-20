@@ -101,5 +101,5 @@ window.customCards.push({
     type: 'threedy-card',
     name: "Threedy Card",
     preview: false,
-    description: "OctoPrint 3D Printer Card"
+    description: "3D Printer Card"
 })

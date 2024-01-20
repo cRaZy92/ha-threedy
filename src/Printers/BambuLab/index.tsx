@@ -27,7 +27,7 @@ const BambuLab = ({ printerConfig }) => {
         },
     });
 
-    const printing = (hass.states[`${config.base_entity}_current_stage`] || { state: "unknown" }).state === 'Printing';
+    const printing = (hass.states[`${config.base_entity}_print_status`] || { state: "unknown" }).state.toLowerCase() === 'running';
     const progress = (hass.states[`${config.base_entity}_print_progress`] || { state: 0 }).state / 100;
 
     const x = useMotionValue(0);
