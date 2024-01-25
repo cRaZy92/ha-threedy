@@ -63,7 +63,7 @@ const getCameras = ( hass: HomeAssistant ) => {
     const cameras = {};
 
     Object.keys( hass.states ).filter(
-        entityId => (/^camera\..*/g).test(entityId)
+        entityId => (/^camera\..*/g).test(entityId) || (/^image\..*/g).test(entityId)
     ).map( camera => cameras[camera] = camera );
 
     return cameras;
